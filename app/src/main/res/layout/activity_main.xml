@@ -1,19 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/workout_background"
+    android:orientation="vertical"
+    android:paddingTop="30dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/workout_stats"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_gravity="center"
+        android:background="@drawable/workout_stats_background"
+        android:elevation="4dp"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:layout_margin="15dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/rjdhani_bold"
+            android:text="12 Mar, 2025"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/day_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/rjdhani_bold"
+            android:text="Year 1 - Month 1 - Week 1 - Day 1"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/rjdhani_bold"
+            android:text="13:00 - 14:30 (1h30m)"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="7dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="2dp"
+        android:background="@drawable/workout_separator"
+        android:layout_below="@+id/workout_stats"
+        android:layout_alignStart="@+id/workout_stats"
+        android:layout_alignEnd="@id/workout_stats"/>
+
+</RelativeLayout>

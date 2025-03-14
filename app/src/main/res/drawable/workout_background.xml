@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape
+            android:shape="rectangle">
+            <gradient
+                android:startColor="@color/color2"
+                android:endColor="@color/color1"
+                android:angle="240" />
+        </shape>
+    </item>
+
+    <item
+        android:width="270dp"
+        android:height="270dp"
+        android:gravity="center|bottom">
+        <bitmap
+            android:src="@drawable/dumbbell"
+            android:alpha="0.15"/>
+    </item>
+</layer-list>
