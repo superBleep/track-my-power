@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:background="@drawable/workout_stats_background">
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="Dumbbell Bench Press"
+        android:layout_weight="1"
+        android:fontFamily="@font/rjdhani_bold"
+        android:textSize="15sp"
+        android:padding="6dp"/>
+
+    <TextView
+        android:id="@+id/tv_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Chest"
+        android:fontFamily="@font/rjdhani_bold"
+        android:textSize="15sp"
+        android:padding="6dp" />
+
+</LinearLayout>
