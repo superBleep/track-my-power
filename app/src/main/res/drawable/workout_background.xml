@@ -13,9 +13,6 @@
     <item
         android:width="270dp"
         android:height="270dp"
-        android:gravity="center|bottom">
-        <bitmap
-            android:src="@drawable/dumbbell"
-            android:alpha="0.15"/>
-    </item>
+        android:gravity="center|bottom"
+        android:drawable="@drawable/dumbbell"/>
 </layer-list>

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TrackMyPower</string>
+    <string name="add_exercise">Add exercise</string>
 </resources>
