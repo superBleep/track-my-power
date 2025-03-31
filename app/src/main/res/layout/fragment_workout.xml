@@ -74,7 +74,7 @@
         android:layout_marginBottom="53sp"
         android:layout_marginEnd="28dp"
         android:background="@drawable/add_button"
-        android:contentDescription="@string/add_exercise"
+        android:contentDescription="@string/workout_add_exercise"
         android:src="@drawable/plus"
         app:tint="@color/color1"
         app:layout_constraintBottom_toBottomOf="parent"

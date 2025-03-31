@@ -8,5 +8,14 @@
         android:id="@+id/workoutFragment"
         android:name="com.afca.trackmypower.ui.workout.WorkoutFragment"
         android:label="WorkoutFragment"
-        tools:layout="@layout/fragment_workout"/>
+        tools:layout="@layout/fragment_workout">
+        <action
+            android:id="@+id/action_workoutFragment_to_workoutStatsFragment"
+            app:destination="@id/workoutStatsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/workoutStatsFragment"
+        android:name="com.afca.trackmypower.ui.workout.WorkoutStatsFragment"
+        android:label="WorkoutStatsFragment"
+        tools:layout="@layout/fragment_workout_stats"/>
 </navigation>

@@ -2,10 +2,13 @@ package com.afca.trackmypower.ui.workout
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.afca.trackmypower.R
@@ -22,6 +25,11 @@ class WorkoutFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        view.findViewById<LinearLayout>(R.id.workout_stats).setOnLongClickListener {
+            goToWorkoutStatsFragment()
+            true
+        }
 
         view.findViewById<TextView>(R.id.date).text = "01 Jan, 2025"
         view.findViewById<TextView>(R.id.day_position).text = "Year 1 - Month 1 - Week 1 - Day 1"
@@ -40,5 +48,11 @@ class WorkoutFragment : Fragment() {
             this.adapter = adapter
             this.layoutManager = layoutManager
         }
+    }
+
+    private fun goToWorkoutStatsFragment() {
+        val action = WorkoutFragmentDirections.actionWorkoutFragmentToWorkoutStatsFragment()
+
+        findNavController().navigate(action)
     }
 }

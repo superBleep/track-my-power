@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="workout_stats_edit_stats">Modifică</string>
+    <string name="workout_add_exercise">Adaugă exercițiu</string>
+    <string name="workout_stats_title">Modifică Datele</string>
+    <string name="workout_stats_date">Dată</string>
+    <string name="workout_stats_date_hint">1 Ian 2025</string>
+    <string name="workout_stats_year">An</string>
+    <string name="workout_stats_month">Lună</string>
+    <string name="workout_stats_day">Zi</string>
+    <string name="workout_stats_start_time">Oră Început</string>
+    <string name="workout_stats_end_time">Oră Sfârșit</string>
+    <string name="done_button">Salvează</string>
+    <string name="back_button">Înapoi</string>
+</resources>
