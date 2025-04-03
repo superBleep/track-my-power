@@ -179,6 +179,7 @@
                 android:textSize="15sp" />
 
             <TextView
+                android:id="@+id/start_time_input"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/rjdhani_bold"
@@ -204,6 +205,7 @@
                 android:textSize="15sp" />
 
             <TextView
+                android:id="@+id/end_time_input"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/rjdhani_bold"
