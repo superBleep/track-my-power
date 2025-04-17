@@ -19,4 +19,5 @@
     <string name="done_button">Done</string>
     <string name="workout_stats_date_hint">01 Jan, 2025</string>
     <string name="back_button">Back</string>
+    <string name="workout_stats_week">Week</string>
 </resources>

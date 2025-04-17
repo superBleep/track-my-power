@@ -6,6 +6,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.afca.trackmypower.data.models.Workout
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface WorkoutDAO {
@@ -19,7 +20,7 @@ interface WorkoutDAO {
         WHERE id = :id
     """
     )
-    suspend fun get(id: Long): Workout
+    fun get(id: Long): Flow<Workout?>
 
     @Update
     suspend fun update(workout: Workout)

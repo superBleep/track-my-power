@@ -1,12 +1,10 @@
 package com.afca.trackmypower
 
 import android.app.Application
-import androidx.room.Room
-import com.afca.trackmypower.data.LocalDatabase
+import dagger.hilt.android.HiltAndroidApp
 
+@HiltAndroidApp
 class ApplicationController: Application() {
-    lateinit var localDatabase: LocalDatabase
-
     companion object {
         var instance: ApplicationController? = null
 
@@ -17,16 +15,5 @@ class ApplicationController: Application() {
         super.onCreate()
 
         instance = this
-        initDatabase()
-    }
-
-    private fun initDatabase() {
-        localDatabase = Room.databaseBuilder(
-            context = this,
-            klass = LocalDatabase::class.java,
-            name = "track_my_power_db"
-        )
-            .fallbackToDestructiveMigration()
-            .build()
     }
 }
