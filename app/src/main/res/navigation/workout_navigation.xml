@@ -11,7 +11,12 @@
         tools:layout="@layout/fragment_workout">
         <action
             android:id="@+id/action_workoutFragment_to_workoutStatsFragment"
-            app:destination="@id/workoutStatsFragment" />
+            app:destination="@id/workoutStatsFragment">
+            <argument
+                android:name="id"
+                app:argType="long"
+                app:nullable="false" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/workoutStatsFragment"

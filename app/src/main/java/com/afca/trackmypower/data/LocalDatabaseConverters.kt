@@ -5,7 +5,7 @@ import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
-class LocalDatabaseConverters {
+object LocalDatabaseConverters {
     @TypeConverter
     fun fromLocalDate(localDate: LocalDate): String {
         return localDate.format(DateTimeFormatter.ISO_LOCAL_DATE)

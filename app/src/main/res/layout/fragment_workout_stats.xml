@@ -59,7 +59,8 @@
                 android:fontFamily="@font/rjdhani_bold"
                 android:padding="6dp"
                 android:text="@string/workout_stats_date"
-                android:textSize="15sp" />
+                android:textColor="@color/color4"
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/date_input"
@@ -71,7 +72,7 @@
                 android:importantForAutofill="no"
                 android:padding="6dp"
                 android:textColor="@color/color3"
-                android:textColorHint="@color/color3"
+                android:textColorHint="@color/textHint"
                 android:textSize="15sp"
                 android:textAlignment="viewEnd"/>
         </LinearLayout>
@@ -88,12 +89,14 @@
                 android:fontFamily="@font/rjdhani_bold"
                 android:padding="6dp"
                 android:text="@string/workout_stats_year"
-                android:textSize="15sp" />
+                android:textColor="@color/color4"
+                android:textSize="17sp" />
 
             <EditText
                 android:id="@+id/year_input"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textAlignment="viewEnd"
                 android:background="@null"
                 android:fontFamily="@font/rjdhani_bold"
                 android:hint="@string/workout_stats_year_hint"
@@ -101,8 +104,8 @@
                 android:inputType="number"
                 android:padding="6dp"
                 android:textColor="@color/color3"
-                android:textColorHint="@color/color3"
-                android:textSize="15sp" />
+                android:textColorHint="@color/textHint"
+                android:textSize="17sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -117,12 +120,13 @@
                 android:fontFamily="@font/rjdhani_bold"
                 android:padding="6dp"
                 android:text="@string/workout_stats_month"
-                android:textSize="15sp" />
+                android:textColor="@color/color4"
+                android:textSize="17sp" />
 
             <EditText
                 android:id="@+id/month_input"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@null"
                 android:fontFamily="@font/rjdhani_bold"
                 android:hint="@string/workout_stats_month_hint"
@@ -130,8 +134,8 @@
                 android:inputType="number"
                 android:padding="6dp"
                 android:textColor="@color/color3"
-                android:textColorHint="@color/color3"
-                android:textSize="15sp" />
+                android:textColorHint="@color/textHint"
+                android:textSize="17sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -146,7 +150,7 @@
                 android:fontFamily="@font/rjdhani_bold"
                 android:padding="6dp"
                 android:text="@string/workout_stats_week"
-                android:textSize="15sp" />
+                android:textSize="17sp" />
 
             <EditText
                 android:id="@+id/week_input"
@@ -154,13 +158,13 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:fontFamily="@font/rjdhani_bold"
-                android:hint="@string/workout_stats_month_hint"
+                android:hint="@string/workout_stats_week_hint"
                 android:importantForAutofill="no"
                 android:inputType="number"
                 android:padding="6dp"
                 android:textColor="@color/color3"
-                android:textColorHint="@color/color3"
-                android:textSize="15sp" />
+                android:textColorHint="@color/textHint"
+                android:textSize="17sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -175,7 +179,8 @@
                 android:fontFamily="@font/rjdhani_bold"
                 android:padding="6dp"
                 android:text="@string/workout_stats_day"
-                android:textSize="15sp" />
+                android:textColor="@color/color4"
+                android:textSize="17sp" />
 
             <EditText
                 android:id="@+id/day_input"
@@ -188,8 +193,8 @@
                 android:inputType="number"
                 android:padding="6dp"
                 android:textColor="@color/color3"
-                android:textColorHint="@color/color3"
-                android:textSize="15sp" />
+                android:textColorHint="@color/textHint"
+                android:textSize="17sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -204,18 +209,19 @@
                 android:fontFamily="@font/rjdhani_bold"
                 android:padding="6dp"
                 android:text="@string/workout_stats_start_time"
-                android:textSize="15sp" />
+                android:textColor="@color/color4"
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/start_time_input"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/rjdhani_bold"
-                android:labelFor="@+id/start_time_input"
                 android:padding="6dp"
-                android:text="@string/workout_stats_start_time_hint"
+                android:hint="@string/workout_stats_start_time_hint"
                 android:textColor="@color/color3"
-                android:textSize="15sp" />
+                android:textColorHint="@color/textHint"
+                android:textSize="17sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -230,18 +236,19 @@
                 android:fontFamily="@font/rjdhani_bold"
                 android:padding="6dp"
                 android:text="@string/workout_stats_end_time"
-                android:textSize="15sp" />
+                android:textColor="@color/color4"
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/end_time_input"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/rjdhani_bold"
-                android:labelFor="@+id/start_time_input"
                 android:padding="6dp"
-                android:text="@string/workout_stats_end_time_hint"
+                android:hint="@string/workout_stats_end_time_hint"
                 android:textColor="@color/color3"
-                android:textSize="15sp" />
+                android:textColorHint="@color/textHint"
+                android:textSize="17sp" />
         </LinearLayout>
     </LinearLayout>
 

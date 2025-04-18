@@ -1,7 +1,10 @@
 package com.afca.trackmypower
 
 import java.time.Duration
+import java.time.LocalDate
 import java.time.LocalTime
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 import java.util.Locale
 
 object Utils {
@@ -17,5 +20,12 @@ object Utils {
         val minutes = duration.toMinutes() % 60
 
         return String.format(Locale.getDefault(), "%1dh%2dm", hours, minutes)
+    }
+
+    fun formatDate(date: LocalDate): String {
+        return date.format(DateTimeFormatter
+            .ofLocalizedDate(FormatStyle.LONG)
+            .withLocale(Locale.getDefault())
+        )
     }
 }

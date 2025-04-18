@@ -15,6 +15,7 @@
         android:layout_weight="1"
         android:fontFamily="@font/rjdhani_bold"
         android:textSize="15sp"
+        android:textColor="@color/color4"
         android:padding="6dp"/>
 
     <TextView
@@ -24,6 +25,7 @@
         tools:text="Chest"
         android:fontFamily="@font/rjdhani_bold"
         android:textSize="15sp"
+        android:textColor="@color/color4"
         android:padding="6dp" />
 
 </LinearLayout>

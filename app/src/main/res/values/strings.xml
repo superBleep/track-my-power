@@ -5,19 +5,22 @@
 
     <string name="workout_stats_title">Edit Stats</string>
     <string name="workout_stats_date">Date</string>
+    <string name="workout_stats_date_hint">1 Jan, 2025</string>
     <string name="workout_stats_year">Year</string>
     <string name="workout_stats_year_hint" translatable="false">1</string>
     <string name="workout_stats_month">Month</string>
-    <string name="workout_stats_month_hint" translatable="false">3</string>
+    <string name="workout_stats_month_hint" translatable="false">2</string>
+    <string name="workout_stats_week">Week</string>
+    <string name="workout_stats_week_hint" translatable="false">3</string>
     <string name="workout_stats_day">Day</string>
-    <string name="workout_stats_day_hint" translatable="false">2</string>
+    <string name="workout_stats_day_hint" translatable="false">4</string>
     <string name="workout_stats_start_time">Start Time</string>
     <string name="workout_stats_start_time_hint" translatable="false">12:00</string>
     <string name="workout_stats_end_time">End Time</string>
     <string name="workout_stats_end_time_hint" translatable="false">13:00</string>
     <string name="workout_stats_edit_stats">Edit</string>
     <string name="done_button">Done</string>
-    <string name="workout_stats_date_hint">01 Jan, 2025</string>
+
     <string name="back_button">Back</string>
-    <string name="workout_stats_week">Week</string>
+    <string name="workout_position">Year %1$d - Month %2$d - Week %3$d - Day %4$d</string>
 </resources>

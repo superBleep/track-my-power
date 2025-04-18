@@ -12,7 +12,6 @@ class WorkoutFragmentViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
     private val repository: WorkoutRepository
 ) : ViewModel() {
-    private val id: Long = savedStateHandle["id"] ?: 1 // ToDo: get through NavArgs from workout list
-
+    val id: Long = savedStateHandle["id"] ?: 1 // ToDo: get through NavArgs from workout list
     val workoutLiveData = repository.get(id).asLiveData()
 }

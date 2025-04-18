@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="workout_stats_edit_stats">Modifică</string>
     <string name="workout_add_exercise">Adaugă exercițiu</string>
     <string name="workout_stats_title">Modifică Datele</string>
@@ -13,4 +12,6 @@
     <string name="workout_stats_end_time">Oră Sfârșit</string>
     <string name="done_button">Salvează</string>
     <string name="back_button">Înapoi</string>
+    <string name="workout_stats_week">Săptămână</string>
+    <string name="workout_position">Anul %1$d - Luna %2$d - Săptămâna %3$d - Ziua %4$d</string>
 </resources>

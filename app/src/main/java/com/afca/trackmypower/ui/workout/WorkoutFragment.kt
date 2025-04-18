@@ -18,6 +18,8 @@ import com.afca.trackmypower.models.Exercise
 import com.afca.trackmypower.models.MuscleGroup
 import dagger.hilt.android.AndroidEntryPoint
 import java.time.Duration
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 import java.util.Locale
 
 @AndroidEntryPoint
@@ -36,12 +38,11 @@ class WorkoutFragment : Fragment() {
         viewModel.workoutLiveData.observe(viewLifecycleOwner) { workout ->
             workout!!
 
-            view.findViewById<TextView>(R.id.date).text = workout.date.toString()
-            view.findViewById<TextView>(R.id.day_position).text = String.format(
-                Locale.getDefault(),
-                "Year %d - Month %d - Week %d - Day %d",
-                workout.year, workout.month, workout.week, workout.day
+            view.findViewById<TextView>(R.id.date).text = workout.date.format(
+                DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
             )
+            view.findViewById<TextView>(R.id.day_position).text = getString(R.string.workout_position,
+                workout.year, workout.month, workout.week, workout.day)
             view.findViewById<TextView>(R.id.time).text = String.format(
                 Locale.getDefault(),
                 "%s - %s (%s)",
@@ -72,7 +73,7 @@ class WorkoutFragment : Fragment() {
     }
 
     private fun goToWorkoutStatsFragment() {
-        val action = WorkoutFragmentDirections.actionWorkoutFragmentToWorkoutStatsFragment()
+        val action = WorkoutFragmentDirections.actionWorkoutFragmentToWorkoutStatsFragment(viewModel.id)
 
         findNavController().navigate(action)
     }
