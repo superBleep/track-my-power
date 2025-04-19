@@ -1,270 +1,298 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/edit_workout_background"
-    android:paddingTop="30dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:id="@+id/title_bar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="29sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:paddingStart="6dp"
-        android:paddingEnd="6dp"
-        android:orientation="horizontal"
-        android:gravity="center">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.afca.trackmypower.ui.workout.WorkoutStatsFragmentViewModel" />
+        <variable
+            name="listener"
+            type="com.afca.trackmypower.ui.workout.WorkoutStatsListener" />
+    </data>
 
-        <ImageButton
-            android:id="@+id/back_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/arrow"
-            android:backgroundTint="@color/color3"
-            android:contentDescription="@string/back_button" />
-        <View
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/edit_workout_background"
+        android:paddingTop="30dp">
+
+        <LinearLayout
+            android:id="@+id/title_bar"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
-        <TextView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/workout_stats_title"
-            android:fontFamily="@font/rjdhani_bold"
-            android:textSize="24sp"/>
-    </LinearLayout>
+            android:layout_marginHorizontal="29sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:orientation="horizontal"
+            android:gravity="center">
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="@id/title_bar"
-        app:layout_constraintStart_toStartOf="@id/title_bar"
-        app:layout_constraintTop_toBottomOf="@id/title_bar"
-        android:paddingTop="@dimen/workout_items_spacing">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/rjdhani_bold"
-                android:padding="6dp"
-                android:text="@string/workout_stats_date"
-                android:textColor="@color/color4"
-                android:textSize="17sp" />
-
-            <TextView
-                android:id="@+id/date_input"
+            <ImageButton
+                android:id="@+id/back_button"
+                android:onClick="@{() -> listener.goToWorkout()}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@null"
+                android:background="@drawable/arrow"
+                android:backgroundTint="@color/color3"
+                android:contentDescription="@string/back_button" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/workout_stats_title"
                 android:fontFamily="@font/rjdhani_bold"
-                android:hint="@string/workout_stats_date_hint"
-                android:importantForAutofill="no"
-                android:padding="6dp"
-                android:textColor="@color/color3"
-                android:textColorHint="@color/textHint"
-                android:textSize="15sp"
-                android:textAlignment="viewEnd"/>
+                android:textSize="24sp" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="@id/title_bar"
+            app:layout_constraintStart_toStartOf="@id/title_bar"
+            app:layout_constraintTop_toBottomOf="@id/title_bar"
+            android:paddingTop="@dimen/workout_items_spacing">
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/rjdhani_bold"
-                android:padding="6dp"
-                android:text="@string/workout_stats_year"
-                android:textColor="@color/color4"
-                android:textSize="17sp" />
-
-            <EditText
-                android:id="@+id/year_input"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAlignment="viewEnd"
-                android:background="@null"
-                android:fontFamily="@font/rjdhani_bold"
-                android:hint="@string/workout_stats_year_hint"
-                android:importantForAutofill="no"
-                android:inputType="number"
-                android:padding="6dp"
-                android:textColor="@color/color3"
-                android:textColorHint="@color/textHint"
-                android:textSize="17sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/rjdhani_bold"
-                android:padding="6dp"
-                android:text="@string/workout_stats_month"
-                android:textColor="@color/color4"
-                android:textSize="17sp" />
-
-            <EditText
-                android:id="@+id/month_input"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@null"
-                android:fontFamily="@font/rjdhani_bold"
-                android:hint="@string/workout_stats_month_hint"
-                android:importantForAutofill="no"
-                android:inputType="number"
-                android:padding="6dp"
-                android:textColor="@color/color3"
-                android:textColorHint="@color/textHint"
-                android:textSize="17sp" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/rjdhani_bold"
+                    android:padding="6dp"
+                    android:text="@string/workout_stats_date"
+                    android:textColor="@color/color4"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/date_input"
+                    android:onClick="@{() -> listener.setDate()}"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:fontFamily="@font/rjdhani_bold"
+                    android:hint="@string/workout_stats_date_hint"
+                    android:importantForAutofill="no"
+                    android:padding="6dp"
+                    android:text="@={viewModel.date}"
+                    android:textColor="@color/color3"
+                    android:textColorHint="@color/textHint"
+                    android:textSize="15sp"
+                    android:textAlignment="viewEnd" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/rjdhani_bold"
+                    android:padding="6dp"
+                    android:text="@string/workout_stats_year"
+                    android:textColor="@color/color4"
+                    android:textSize="17sp" />
+
+                <EditText
+                    android:id="@+id/year_input"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="viewEnd"
+                    android:background="@null"
+                    android:fontFamily="@font/rjdhani_bold"
+                    android:hint="@string/workout_stats_year_hint"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:padding="6dp"
+                    android:text="@={viewModel.year}"
+                    android:textColor="@color/color3"
+                    android:textColorHint="@color/textHint"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/rjdhani_bold"
+                    android:padding="6dp"
+                    android:text="@string/workout_stats_month"
+                    android:textColor="@color/color4"
+                    android:textSize="17sp" />
+
+                <EditText
+                    android:id="@+id/month_input"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:fontFamily="@font/rjdhani_bold"
+                    android:hint="@string/workout_stats_month_hint"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:padding="6dp"
+                    android:text="@={viewModel.month}"
+                    android:textColor="@color/color3"
+                    android:textColorHint="@color/textHint"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/rjdhani_bold"
+                    android:padding="6dp"
+                    android:text="@string/workout_stats_week"
+                    android:textSize="17sp" />
+
+                <EditText
+                    android:id="@+id/week_input"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:fontFamily="@font/rjdhani_bold"
+                    android:hint="@string/workout_stats_week_hint"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:padding="6dp"
+                    android:text="@={viewModel.week}"
+                    android:textColor="@color/color3"
+                    android:textColorHint="@color/textHint"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/rjdhani_bold"
+                    android:padding="6dp"
+                    android:text="@string/workout_stats_day"
+                    android:textColor="@color/color4"
+                    android:textSize="17sp" />
+
+                <EditText
+                    android:id="@+id/day_input"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:fontFamily="@font/rjdhani_bold"
+                    android:hint="@string/workout_stats_day_hint"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:padding="6dp"
+                    android:text="@={viewModel.day}"
+                    android:textColor="@color/color3"
+                    android:textColorHint="@color/textHint"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/rjdhani_bold"
+                    android:padding="6dp"
+                    android:text="@string/workout_stats_start_time"
+                    android:textColor="@color/color4"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/start_time_input"
+                    android:onClick="@{() -> listener.setStartTime()}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rjdhani_bold"
+                    android:padding="6dp"
+                    android:hint="@string/workout_stats_start_time_hint"
+                    android:text="@={viewModel.startTime}"
+                    android:textColor="@color/color3"
+                    android:textColorHint="@color/textHint"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/rjdhani_bold"
+                    android:padding="6dp"
+                    android:text="@string/workout_stats_end_time"
+                    android:textColor="@color/color4"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/end_time_input"
+                    android:onClick="@{() -> listener.setEndTime()}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rjdhani_bold"
+                    android:padding="6dp"
+                    android:hint="@string/workout_stats_end_time_hint"
+                    android:text="@={viewModel.endTime}"
+                    android:textColor="@color/color3"
+                    android:textColorHint="@color/textHint"
+                    android:textSize="17sp" />
+            </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+        <TextView
+            android:id="@+id/done_button"
+            android:onClick="@{() -> viewModel.updateWorkout()}"
+            android:layout_width="84dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/workout_separator"
+            android:fontFamily="@font/rjdhani_bold"
+            android:padding="10dp"
+            android:text="@string/done_button"
+            android:textAlignment="center"
+            android:textColor="@color/color1"
+            android:layout_marginBottom="53sp"
+            android:layout_marginEnd="28dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/rjdhani_bold"
-                android:padding="6dp"
-                android:text="@string/workout_stats_week"
-                android:textSize="17sp" />
-
-            <EditText
-                android:id="@+id/week_input"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:fontFamily="@font/rjdhani_bold"
-                android:hint="@string/workout_stats_week_hint"
-                android:importantForAutofill="no"
-                android:inputType="number"
-                android:padding="6dp"
-                android:textColor="@color/color3"
-                android:textColorHint="@color/textHint"
-                android:textSize="17sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/rjdhani_bold"
-                android:padding="6dp"
-                android:text="@string/workout_stats_day"
-                android:textColor="@color/color4"
-                android:textSize="17sp" />
-
-            <EditText
-                android:id="@+id/day_input"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:fontFamily="@font/rjdhani_bold"
-                android:hint="@string/workout_stats_day_hint"
-                android:importantForAutofill="no"
-                android:inputType="number"
-                android:padding="6dp"
-                android:textColor="@color/color3"
-                android:textColorHint="@color/textHint"
-                android:textSize="17sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/rjdhani_bold"
-                android:padding="6dp"
-                android:text="@string/workout_stats_start_time"
-                android:textColor="@color/color4"
-                android:textSize="17sp" />
-
-            <TextView
-                android:id="@+id/start_time_input"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/rjdhani_bold"
-                android:padding="6dp"
-                android:hint="@string/workout_stats_start_time_hint"
-                android:textColor="@color/color3"
-                android:textColorHint="@color/textHint"
-                android:textSize="17sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/rjdhani_bold"
-                android:padding="6dp"
-                android:text="@string/workout_stats_end_time"
-                android:textColor="@color/color4"
-                android:textSize="17sp" />
-
-            <TextView
-                android:id="@+id/end_time_input"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/rjdhani_bold"
-                android:padding="6dp"
-                android:hint="@string/workout_stats_end_time_hint"
-                android:textColor="@color/color3"
-                android:textColorHint="@color/textHint"
-                android:textSize="17sp" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/done_button"
-        android:layout_width="84dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/workout_separator"
-        android:fontFamily="@font/rjdhani_bold"
-        android:padding="10dp"
-        android:text="@string/done_button"
-        android:textAlignment="center"
-        android:textColor="@color/color1"
-        android:layout_marginBottom="53sp"
-        android:layout_marginEnd="28dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
