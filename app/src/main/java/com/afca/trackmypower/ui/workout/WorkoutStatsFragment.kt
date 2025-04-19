@@ -16,8 +16,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.afca.trackmypower.R
-import com.afca.trackmypower.Utils.formatDate
-import com.afca.trackmypower.Utils.formatTime
+import com.afca.trackmypower.helpers.utils.Formatters.formatDate
+import com.afca.trackmypower.helpers.utils.Formatters.formatTime
 import com.afca.trackmypower.databinding.FragmentWorkoutStatsBinding
 import com.afca.trackmypower.helpers.extensions.showToast
 import dagger.hilt.android.AndroidEntryPoint

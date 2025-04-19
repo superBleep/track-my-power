@@ -1,4 +1,4 @@
-package com.afca.trackmypower
+package com.afca.trackmypower.helpers.utils
 
 import java.time.Duration
 import java.time.LocalDate
@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.util.Locale
 
-object Utils {
+object Formatters {
     fun formatTime(time: LocalTime): String {
         val hours = time.hour
         val minutes = time.minute
@@ -27,5 +27,18 @@ object Utils {
             .ofLocalizedDate(FormatStyle.LONG)
             .withLocale(Locale.getDefault())
         )
+    }
+
+    fun calculateDuration(start: LocalTime, end: LocalTime): Duration {
+        val startSeconds = start.toSecondOfDay().toLong()
+        val endSeconds = end.toSecondOfDay().toLong()
+
+        val durationSeconds = if (endSeconds >= startSeconds) {
+            endSeconds - startSeconds
+        } else {
+            (24 * 60 * 60L - startSeconds) + endSeconds
+        }
+
+        return Duration.ofSeconds(durationSeconds)
     }
 }

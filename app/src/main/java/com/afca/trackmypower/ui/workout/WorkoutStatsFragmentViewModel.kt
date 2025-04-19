@@ -6,9 +6,9 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.afca.trackmypower.Constants
-import com.afca.trackmypower.Utils.formatDate
-import com.afca.trackmypower.Utils.formatTime
+import com.afca.trackmypower.helpers.Constants
+import com.afca.trackmypower.helpers.utils.Formatters.formatDate
+import com.afca.trackmypower.helpers.utils.Formatters.formatTime
 import com.afca.trackmypower.data.LocalDatabaseConverters
 import com.afca.trackmypower.data.models.Workout
 import com.afca.trackmypower.data.repositories.workout.WorkoutRepository

@@ -1,4 +1,4 @@
-package com.afca.trackmypower
+package com.afca.trackmypower.helpers
 
 import java.time.format.FormatStyle
 

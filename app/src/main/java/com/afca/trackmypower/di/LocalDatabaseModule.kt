@@ -1,7 +1,9 @@
-package com.afca.trackmypower.data
+package com.afca.trackmypower.di
 
 import android.content.Context
 import androidx.room.Room
+import com.afca.trackmypower.data.LocalDatabase
+import com.afca.trackmypower.data.LocalDatabaseCallback
 import com.afca.trackmypower.data.dao.WorkoutDAO
 import dagger.Module
 import dagger.Provides
