@@ -13,8 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.afca.trackmypower.R
 import com.afca.trackmypower.adapters.ExerciseAdapter
 import com.afca.trackmypower.databinding.FragmentWorkoutBinding
-import com.afca.trackmypower.models.Exercise
-import com.afca.trackmypower.models.MuscleGroup
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -40,18 +38,16 @@ class WorkoutFragment : Fragment(), WorkoutListener {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.listener = this
 
-        val recyclerView = view.findViewById<RecyclerView>(R.id.rv_exercises)
-        val exercises = arrayListOf(
-            Exercise(0, "Dumbbell Chest Press", MuscleGroup.Chest),
-            Exercise(2, "Weighted Crunches", MuscleGroup.Abs)
-        )
+        viewModel.exercises.observeForever { exercises ->
+            val recyclerView = view.findViewById<RecyclerView>(R.id.rv_exercises)
 
-        val adapter = ExerciseAdapter(exercises)
-        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            val adapter = ExerciseAdapter(exercises)
+            val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
-        recyclerView.apply {
-            this.adapter = adapter
-            this.layoutManager = layoutManager
+            recyclerView.apply {
+                this.adapter = adapter
+                this.layoutManager = layoutManager
+            }
         }
     }
 

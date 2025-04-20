@@ -4,5 +4,8 @@ enum class MuscleGroup {
     Chest,
     Legs,
     Shoulders,
-    Abs
+    Abs,
+    Back,
+    Biceps,
+    Triceps
 }

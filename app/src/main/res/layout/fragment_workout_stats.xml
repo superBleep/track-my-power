@@ -48,6 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/workout_stats_title"
+                android:textColor="@color/color4"
                 android:fontFamily="@font/rjdhani_bold"
                 android:textSize="24sp" />
         </LinearLayout>
@@ -124,6 +125,7 @@
                     android:text="@={viewModel.year}"
                     android:textColor="@color/color3"
                     android:textColorHint="@color/textHint"
+                    android:gravity="end"
                     android:textSize="17sp" />
             </LinearLayout>
 
@@ -155,6 +157,7 @@
                     android:text="@={viewModel.month}"
                     android:textColor="@color/color3"
                     android:textColorHint="@color/textHint"
+                    android:gravity="end"
                     android:textSize="17sp" />
             </LinearLayout>
 
@@ -169,6 +172,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/rjdhani_bold"
                     android:padding="6dp"
+                    android:textColor="@color/color4"
                     android:text="@string/workout_stats_week"
                     android:textSize="17sp" />
 
@@ -185,7 +189,8 @@
                     android:text="@={viewModel.week}"
                     android:textColor="@color/color3"
                     android:textColorHint="@color/textHint"
-                    android:textSize="17sp" />
+                    android:textSize="17sp"
+                    android:gravity="end" />
             </LinearLayout>
 
             <LinearLayout
@@ -216,7 +221,8 @@
                     android:text="@={viewModel.day}"
                     android:textColor="@color/color3"
                     android:textColorHint="@color/textHint"
-                    android:textSize="17sp" />
+                    android:textSize="17sp"
+                    android:gravity="end" />
             </LinearLayout>
 
             <LinearLayout
@@ -245,7 +251,8 @@
                     android:text="@={viewModel.startTime}"
                     android:textColor="@color/color3"
                     android:textColorHint="@color/textHint"
-                    android:textSize="17sp" />
+                    android:textSize="17sp"
+                    android:gravity="end" />
             </LinearLayout>
 
             <LinearLayout
@@ -274,7 +281,8 @@
                     android:text="@={viewModel.endTime}"
                     android:textColor="@color/color3"
                     android:textColorHint="@color/textHint"
-                    android:textSize="17sp" />
+                    android:textSize="17sp"
+                    android:gravity="end" />
             </LinearLayout>
         </LinearLayout>
 

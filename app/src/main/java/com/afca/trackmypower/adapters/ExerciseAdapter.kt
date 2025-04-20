@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.afca.trackmypower.R
-import com.afca.trackmypower.models.Exercise
+import com.afca.trackmypower.data.models.Exercise
 
 class ExerciseAdapter(
     private val exercises: List<Exercise>

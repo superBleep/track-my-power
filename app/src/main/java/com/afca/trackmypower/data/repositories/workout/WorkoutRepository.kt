@@ -9,5 +9,6 @@ class WorkoutRepository @Inject constructor(
 ) {
     suspend fun insert(workout: Workout) = dao.insert(workout)
     fun get(id: Long) = dao.get(id)
+    fun getWithExercises(id: Long) = dao.getWithExercises(id)
     suspend fun update(workout: Workout) = dao.update(workout)
 }

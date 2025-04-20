@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Room
 import com.afca.trackmypower.data.LocalDatabase
 import com.afca.trackmypower.data.LocalDatabaseCallback
+import com.afca.trackmypower.data.dao.ExerciseDAO
+import com.afca.trackmypower.data.dao.WorkSetDAO
 import com.afca.trackmypower.data.dao.WorkoutDAO
 import dagger.Module
 import dagger.Provides
@@ -33,4 +35,10 @@ class LocalDatabaseModule {
 
     @Provides
     fun providedWorkoutDAO(db: LocalDatabase): WorkoutDAO = db.workoutDAO
+
+    @Provides
+    fun providedExerciseDAO(db: LocalDatabase): ExerciseDAO = db.exerciseDAO
+
+    @Provides
+    fun providedWorkSetDAO(db: LocalDatabase): WorkSetDAO = db.workSetDAO
 }

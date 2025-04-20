@@ -6,12 +6,15 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import com.afca.trackmypower.R
 import com.afca.trackmypower.helpers.Constants
 import com.afca.trackmypower.helpers.utils.Formatters.formatDate
 import com.afca.trackmypower.helpers.utils.Formatters.formatTime
 import com.afca.trackmypower.data.LocalDatabaseConverters
 import com.afca.trackmypower.data.models.Workout
 import com.afca.trackmypower.data.repositories.workout.WorkoutRepository
+import com.afca.trackmypower.helpers.utils.StringProvider
+import com.afca.trackmypower.helpers.utils.StringProviderImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -26,6 +29,7 @@ import javax.inject.Inject
 @HiltViewModel
 class WorkoutStatsFragmentViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
+    private val stringProvider: StringProvider,
     private val repository: WorkoutRepository
 ) : ViewModel() {
     val id: Long = savedStateHandle["id"]!!
@@ -63,15 +67,17 @@ class WorkoutStatsFragmentViewModel @Inject constructor(
     fun updateWorkout() {
         CoroutineScope(Dispatchers.IO).launch {
             val nullError = when {
-                year.value.isNullOrBlank() -> "year"
-                month.value.isNullOrBlank() -> "month"
-                week.value.isNullOrBlank() -> "week"
-                day.value.isNullOrBlank() -> "day"
+                year.value.isNullOrBlank() -> stringProvider.getString(R.string.workout_stats_err_year)
+                month.value.isNullOrBlank() -> stringProvider.getString(R.string.workout_stats_err_month)
+                week.value.isNullOrBlank() -> stringProvider.getString(R.string.workout_stats_err_week)
+                day.value.isNullOrBlank() -> stringProvider.getString(R.string.workout_stats_err_day)
                 else -> null
             }
 
             if (!nullError.isNullOrBlank()) {
-                _updateState.emit(Result.failure(Exception("New $nullError can't be null")))
+                _updateState.emit(Result.failure(Exception(nullError + " " +
+                    stringProvider.getString(R.string.workout_stats_err_null)
+                )))
                 return@launch
             }
 
@@ -90,11 +96,11 @@ class WorkoutStatsFragmentViewModel @Inject constructor(
             )
 
             val logicError = when {
-                workout.date.isAfter(LocalDate.now()) -> "New date can't be in the future"
-                workout.year < 1 -> "New year can't be less than 1"
-                workout.month < 1 || workout.month > 12 -> "New month must be between 1 and 12"
-                workout.week < 1 || workout.week > 4 -> "New week must be between 1 and 4"
-                workout.day < 1 || workout.day > 7 -> "New day must be between 1 and 7"
+                workout.date.isAfter(LocalDate.now()) -> stringProvider.getString(R.string.workout_stats_err_date_future)
+                workout.year < 1 -> stringProvider.getString(R.string.workout_stats_err_year_range)
+                workout.month < 1 || workout.month > 12 -> stringProvider.getString(R.string.workout_stats_err_month_range)
+                workout.week < 1 || workout.week > 4 -> stringProvider.getString(R.string.workout_stats_err_week_range)
+                workout.day < 1 || workout.day > 7 -> stringProvider.getString(R.string.workout_stats_err_day_range)
                 else -> null
             }
 

@@ -6,12 +6,26 @@
     <string name="workout_stats_date">Fecha</string>
     <string name="workout_stats_date_hint">1 de Ene de 2025</string>
     <string name="workout_stats_year">Año</string>
+    <string name="workout_stats_year_hint">año</string>
     <string name="workout_stats_month">Mes</string>
+    <string name="workout_stats_week_hint">semana</string>
     <string name="workout_stats_day">Día</string>
+    <string name="workout_stats_day_hint">día</string>
     <string name="workout_stats_start_time">Hora de comienzo</string>
     <string name="workout_stats_end_time">Hora de finalización</string>
     <string name="done_button">Guardar</string>
     <string name="back_button">Volver</string>
+    <string name="workout_stats_month_hint">mes</string>
     <string name="workout_stats_week">Semana</string>
     <string name="workout_position">Año %1$d - Mes %2$d - Semana %3$d - Día %4$d</string>
+    <string name="workout_stats_err_year">El nuevo año</string>
+    <string name="workout_stats_err_month">El nuevo mes</string>
+    <string name="workout_stats_err_week">La nueva semana</string>
+    <string name="workout_stats_err_day">La nueva día</string>
+    <string name="workout_stats_err_null">no puede ser null</string>
+    <string name="workout_stats_err_date_future">La nueva fecha no puede estar en el futuro</string>
+    <string name="workout_stats_err_year_range">El neuvo año no puede ser menos que 1</string>
+    <string name="workout_stats_err_month_range">El nuevo mes debe estar entre 1 y 12</string>
+    <string name="workout_stats_err_week_range">La nueva semana debe estar entre 1 y 4</string>
+    <string name="workout_stats_err_day_range">La nueva día debe estar entre 1 y 7</string>
 </resources>

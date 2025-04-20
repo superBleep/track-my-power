@@ -6,12 +6,26 @@
     <string name="workout_stats_date">Dată</string>
     <string name="workout_stats_date_hint">1 Ian 2025</string>
     <string name="workout_stats_year">An</string>
+    <string name="workout_stats_year_hint">an</string>
     <string name="workout_stats_month">Lună</string>
+    <string name="workout_stats_week_hint">săptămână</string>
     <string name="workout_stats_day">Zi</string>
+    <string name="workout_stats_day_hint">zi</string>
     <string name="workout_stats_start_time">Oră Început</string>
     <string name="workout_stats_end_time">Oră Sfârșit</string>
     <string name="done_button">Salvează</string>
     <string name="back_button">Înapoi</string>
+    <string name="workout_stats_month_hint">lună</string>
     <string name="workout_stats_week">Săptămână</string>
     <string name="workout_position">Anul %1$d - Luna %2$d - Săptămâna %3$d - Ziua %4$d</string>
+    <string name="workout_stats_err_year">Noul an</string>
+    <string name="workout_stats_err_month">Noua lună</string>
+    <string name="workout_stats_err_week">Noua săptămână</string>
+    <string name="workout_stats_err_day">Noua zi</string>
+    <string name="workout_stats_err_null">nu poate fi null</string>
+    <string name="workout_stats_err_date_future">Noua dată nu poate să fie în viitor</string>
+    <string name="workout_stats_err_year_range">Noul an nu poate fi mai mic decât 1</string>
+    <string name="workout_stats_err_month_range">Noua lună trebuie să fie între 1 și 12</string>
+    <string name="workout_stats_err_week_range">Noua săptămână trebuie să fie între 1 și 4</string>
+    <string name="workout_stats_err_day_range">Noua zi trebuie să fie între 1 și 7</string>
 </resources>
