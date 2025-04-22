@@ -1,16 +1,16 @@
 package com.afca.trackmypower.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.afca.trackmypower.R
-import com.afca.trackmypower.data.models.Exercise
+import com.afca.trackmypower.data.models.ExerciseWithWorkSets
 
 class ExerciseAdapter(
-    private val exercises: List<Exercise>
+    private val exercises: List<ExerciseWithWorkSets>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -26,15 +26,19 @@ class ExerciseAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val exercise = exercises.getOrNull(position) ?: return
 
-        Log.i("CHECK", "onBindViewHolder $position")
         if (holder is ExerciseViewHolder)
             holder.bind(exercise)
     }
 
-    inner class ExerciseViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
-        fun bind(exercise: Exercise) {
-            view.findViewById<TextView>(R.id.tv_name).text = exercise.name
-            view.findViewById<TextView>(R.id.tv_group).text = exercise.group.name
+    inner class ExerciseViewHolder(val view: View): RecyclerView.ViewHolder(view) {
+        private val workSetRV = view.findViewById<RecyclerView>(R.id.rv_worksets)
+
+        fun bind(exerciseWithWorkSets: ExerciseWithWorkSets) {
+            view.findViewById<TextView>(R.id.tv_name).text = exerciseWithWorkSets.exercise.name
+            view.findViewById<TextView>(R.id.tv_group).text = exerciseWithWorkSets.exercise.group.name
+
+            workSetRV.layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false)
+            workSetRV.adapter = WorkSetAdapter(exerciseWithWorkSets.workSets)
         }
     }
 }

@@ -1,31 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
-    android:background="@drawable/workout_stats_background"
-    android:layout_marginTop="@dimen/workout_items_spacing" >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="@dimen/workout_items_spacing">
 
-    <TextView
-        android:id="@+id/tv_name"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:id="@+id/exercise"
+        android:background="@drawable/workout_stats_background"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="Dumbbell Bench Press"
-        android:layout_weight="1"
-        android:fontFamily="@font/rjdhani_bold"
-        android:textSize="15sp"
-        android:textColor="@color/color4"
-        android:padding="6dp"/>
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="Dumbbell Bench Press"
+            android:layout_weight="1"
+            android:fontFamily="@font/rjdhani_bold"
+            android:textSize="15sp"
+            android:textColor="@color/color4"
+            android:padding="6dp"/>
 
-    <TextView
-        android:id="@+id/tv_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="Chest"
-        android:fontFamily="@font/rjdhani_bold"
-        android:textSize="15sp"
-        android:textColor="@color/color4"
-        android:padding="6dp" />
+        <TextView
+            android:id="@+id/tv_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Chest"
+            android:fontFamily="@font/rjdhani_bold"
+            android:textSize="15sp"
+            android:textColor="@color/color4"
+            android:padding="6dp" />
+    </LinearLayout>
 
-</LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_worksets"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="100dp"
+        android:layout_height="200dp"
+        android:background="@drawable/workout_worksets_background"
+        app:layout_constraintTop_toBottomOf="@id/exercise"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

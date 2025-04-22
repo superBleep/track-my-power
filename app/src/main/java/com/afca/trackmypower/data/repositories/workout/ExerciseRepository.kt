@@ -8,5 +8,5 @@ class ExerciseRepository @Inject constructor(
     private val dao: ExerciseDAO
 ) {
     suspend fun insertAll(exercises: List<Exercise>) = dao.insertAll(exercises)
-    fun getWithWorkSets(id: Long) = dao.getWithWorkSets(id)
+    fun getWithWorkSetsByWorkoutId(workoutId: Long) = dao.getWithWorkSetsByWorkoutId(workoutId)
 }

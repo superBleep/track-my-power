@@ -3,7 +3,7 @@ package com.afca.trackmypower.data.models
 import androidx.room.Embedded
 import androidx.room.Relation
 
-data class ExerciseWithSets (
+data class ExerciseWithWorkSets (
     @Embedded
     val exercise: Exercise,
 
