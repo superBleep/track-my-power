@@ -12,8 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.afca.trackmypower.R
 import com.afca.trackmypower.adapters.ExerciseAdapter
-import com.afca.trackmypower.adapters.WorkSetAdapter
-import com.afca.trackmypower.data.models.WorkSet
 import com.afca.trackmypower.databinding.FragmentWorkoutBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -51,6 +49,8 @@ class WorkoutFragment : Fragment(), WorkoutListener {
                 this.layoutManager = exercisesRVLayoutManager
             }
         }
+
+        viewModel.setStats()
     }
 
     override fun onDestroyView() {

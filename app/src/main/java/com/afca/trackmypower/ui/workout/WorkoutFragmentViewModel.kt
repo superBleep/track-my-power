@@ -7,9 +7,9 @@ import androidx.lifecycle.viewModelScope
 import com.afca.trackmypower.R
 import com.afca.trackmypower.data.models.ExerciseWithWorkSets
 import com.afca.trackmypower.data.repositories.workout.ExerciseRepository
-import com.afca.trackmypower.data.repositories.workout.WorkSetRepository
 import com.afca.trackmypower.data.repositories.workout.WorkoutRepository
 import com.afca.trackmypower.helpers.Constants
+import com.afca.trackmypower.helpers.extensions.debugLog
 import com.afca.trackmypower.helpers.utils.Formatters.calculateDuration
 import com.afca.trackmypower.helpers.utils.Formatters.formatDuration
 import com.afca.trackmypower.helpers.utils.Formatters.formatTime
@@ -23,8 +23,8 @@ import javax.inject.Inject
 @HiltViewModel
 class WorkoutFragmentViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
-    workoutRepository: WorkoutRepository,
     private val stringProvider: StringProvider,
+    private val workoutRepository: WorkoutRepository,
     private val exerciseRepository: ExerciseRepository
 ) : ViewModel() {
     val id: Long = savedStateHandle["id"] ?: 1 // ToDo: get through NavArgs from workout list
@@ -34,10 +34,11 @@ class WorkoutFragmentViewModel @Inject constructor(
     val time = MutableLiveData<String>()
     val exercisesWithWorkSets = MutableLiveData<List<ExerciseWithWorkSets>>()
 
-    init {
+    fun setStats() {
         viewModelScope.launch {
             workoutRepository.get(id).collect { workout ->
                 workout!!
+                workout.toString().debugLog()
 
                 date.value = workout.date.format(
                     DateTimeFormatter.ofLocalizedDate(Constants.LOCAL_DATE_FORMAT_STYLE)
