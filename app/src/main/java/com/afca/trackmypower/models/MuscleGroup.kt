@@ -1,11 +1,13 @@
 package com.afca.trackmypower.models
 
 enum class MuscleGroup {
-    Chest,
     Legs,
-    Shoulders,
-    Abs,
+    Compound,
+    Chest,
     Back,
+    Shoulders,
     Biceps,
-    Triceps
+    Triceps,
+    Core,
+    Cardio
 }

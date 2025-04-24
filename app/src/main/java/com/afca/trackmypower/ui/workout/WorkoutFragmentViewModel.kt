@@ -27,7 +27,7 @@ class WorkoutFragmentViewModel @Inject constructor(
     private val workoutRepository: WorkoutRepository,
     private val exerciseRepository: ExerciseRepository
 ) : ViewModel() {
-    val id: Long = savedStateHandle["id"] ?: 1 // ToDo: get through NavArgs from workout list
+    val id: Long = savedStateHandle["id"] ?: 86 // ToDo: get through NavArgs from workout list
 
     val date = MutableLiveData<String>()
     val position = MutableLiveData<String>()
@@ -37,26 +37,27 @@ class WorkoutFragmentViewModel @Inject constructor(
     fun setStats() {
         viewModelScope.launch {
             workoutRepository.get(id).collect { workout ->
-                workout!!
-                workout.toString().debugLog()
+                workout?.let {
+                    workout.toString().debugLog()
 
-                date.value = workout.date.format(
-                    DateTimeFormatter.ofLocalizedDate(Constants.LOCAL_DATE_FORMAT_STYLE)
-                )
-                position.value = stringProvider.getString(
-                    R.string.workout_position,
-                    workout.year, workout.month, workout.week, workout.day
-                )
-                time.value = String.format(
-                    Locale.getDefault(),
-                    "%s - %s (%s)",
-                    formatTime(workout.startTime),
-                    formatTime(workout.endTime),
-                    formatDuration(calculateDuration(workout.startTime, workout.endTime))
-                )
+                    date.value = workout.date.format(
+                        DateTimeFormatter.ofLocalizedDate(Constants.LOCAL_DATE_FORMAT_STYLE)
+                    )
+                    position.value = stringProvider.getString(
+                        R.string.workout_position,
+                        workout.year, workout.month, workout.week, workout.day
+                    )
+                    time.value = String.format(
+                        Locale.getDefault(),
+                        "%s - %s (%s)",
+                        formatTime(workout.startTime),
+                        formatTime(workout.endTime),
+                        formatDuration(calculateDuration(workout.startTime, workout.endTime))
+                    )
 
-                exerciseRepository.getWithWorkSetsByWorkoutId(workout.id).collect { exercises ->
-                    exercisesWithWorkSets.value = exercises
+                    exerciseRepository.getWithWorkSetsByWorkoutId(workout.id).collect { exercises ->
+                        exercisesWithWorkSets.value = exercises
+                    }
                 }
             }
         }

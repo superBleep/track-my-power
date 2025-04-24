@@ -21,10 +21,9 @@ class LocalDatabaseModule {
     fun providesDatabase(
         @ApplicationContext context: Context
     ): LocalDatabase {
-        return Room.databaseBuilder(
+        return Room.inMemoryDatabaseBuilder(
             context,
-            LocalDatabase::class.java,
-            "track_my_power_db"
+            LocalDatabase::class.java
         )
             .fallbackToDestructiveMigration()
             .build()
