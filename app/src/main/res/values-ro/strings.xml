@@ -28,4 +28,5 @@
     <string name="workout_stats_err_month_range">Noua lună trebuie să fie între 1 și 12</string>
     <string name="workout_stats_err_week_range">Noua săptămână trebuie să fie între 1 și 4</string>
     <string name="workout_stats_err_day_range">Noua zi trebuie să fie între 1 și 7</string>
+    <string name="workset_set">Setul %1$d</string>
 </resources>

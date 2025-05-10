@@ -34,4 +34,5 @@
     <string name="workout_stats_err_day">New day</string>
     <string name="workout_stats_err_day_range">New day must be between 1 and 7</string>
     <string name="workout_stats_err_null">can\'t be null</string>
+    <string name="workset_set">Set %1$d</string>
 </resources>

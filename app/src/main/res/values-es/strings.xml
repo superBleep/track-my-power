@@ -28,4 +28,5 @@
     <string name="workout_stats_err_month_range">El nuevo mes debe estar entre 1 y 12</string>
     <string name="workout_stats_err_week_range">La nueva semana debe estar entre 1 y 4</string>
     <string name="workout_stats_err_day_range">La nueva día debe estar entre 1 y 7</string>
+    <string name="workset_set">La serie %1$d</string>
 </resources>

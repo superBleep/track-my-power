@@ -38,15 +38,17 @@ class WorkoutFragment : Fragment(), WorkoutListener {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.listener = this
 
-        viewModel.exercisesWithWorkSets.observe(viewLifecycleOwner) { exercisesWithWorkSets ->
-            val exercisesRV = view.findViewById<RecyclerView>(R.id.rv_exercises)
+        viewModel.workout.observe(viewLifecycleOwner) { workoutWithExercises ->
+            workoutWithExercises?.let {
+                val exercisesRV = view.findViewById<RecyclerView>(R.id.rv_exercises)
 
-            val exercisesRVAdapter = ExerciseAdapter(exercisesWithWorkSets)
-            val exercisesRVLayoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                val exercisesRVAdapter = ExerciseAdapter(workoutWithExercises.exercises)
+                val exercisesRVLayoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
-            exercisesRV.apply {
-                this.adapter = exercisesRVAdapter
-                this.layoutManager = exercisesRVLayoutManager
+                exercisesRV.apply {
+                    this.adapter = exercisesRVAdapter
+                    this.layoutManager = exercisesRVLayoutManager
+                }
             }
         }
 

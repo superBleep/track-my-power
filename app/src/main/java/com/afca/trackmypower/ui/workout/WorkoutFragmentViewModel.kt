@@ -5,11 +5,9 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.afca.trackmypower.R
-import com.afca.trackmypower.data.models.ExerciseWithWorkSets
-import com.afca.trackmypower.data.repositories.workout.ExerciseRepository
+import com.afca.trackmypower.data.models.WorkoutWithExercises
 import com.afca.trackmypower.data.repositories.workout.WorkoutRepository
 import com.afca.trackmypower.helpers.Constants
-import com.afca.trackmypower.helpers.extensions.debugLog
 import com.afca.trackmypower.helpers.utils.Formatters.calculateDuration
 import com.afca.trackmypower.helpers.utils.Formatters.formatDuration
 import com.afca.trackmypower.helpers.utils.Formatters.formatTime
@@ -24,40 +22,35 @@ import javax.inject.Inject
 class WorkoutFragmentViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     private val stringProvider: StringProvider,
-    private val workoutRepository: WorkoutRepository,
-    private val exerciseRepository: ExerciseRepository
+    private val workoutRepository: WorkoutRepository
 ) : ViewModel() {
     val id: Long = savedStateHandle["id"] ?: 86 // ToDo: get through NavArgs from workout list
 
     val date = MutableLiveData<String>()
     val position = MutableLiveData<String>()
     val time = MutableLiveData<String>()
-    val exercisesWithWorkSets = MutableLiveData<List<ExerciseWithWorkSets>>()
+    val workout = MutableLiveData<WorkoutWithExercises?>()
 
     fun setStats() {
         viewModelScope.launch {
-            workoutRepository.get(id).collect { workout ->
-                workout?.let {
-                    workout.toString().debugLog()
-
-                    date.value = workout.date.format(
+            workoutRepository.getWithExercises(id).collect { packed ->
+                packed?.let {
+                    date.value = packed.workout.date.format(
                         DateTimeFormatter.ofLocalizedDate(Constants.LOCAL_DATE_FORMAT_STYLE)
                     )
                     position.value = stringProvider.getString(
                         R.string.workout_position,
-                        workout.year, workout.month, workout.week, workout.day
+                        packed.workout.year, packed.workout.month, packed.workout.week, packed.workout.day
                     )
                     time.value = String.format(
                         Locale.getDefault(),
                         "%s - %s (%s)",
-                        formatTime(workout.startTime),
-                        formatTime(workout.endTime),
-                        formatDuration(calculateDuration(workout.startTime, workout.endTime))
+                        formatTime(packed.workout.startTime),
+                        formatTime(packed.workout.endTime),
+                        formatDuration(calculateDuration(packed.workout.startTime, packed.workout.endTime))
                     )
 
-                    exerciseRepository.getWithWorkSetsByWorkoutId(workout.id).collect { exercises ->
-                        exercisesWithWorkSets.value = exercises
-                    }
+                    workout.value = packed
                 }
             }
         }

@@ -11,6 +11,7 @@ import com.afca.trackmypower.data.models.WorkSet
 class WorkSetAdapter(
     private val workSets: List<WorkSet>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.item_workset, parent, false)
@@ -31,7 +32,8 @@ class WorkSetAdapter(
 
     inner class WorkSetViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
         fun bind(workSet: WorkSet) {
-            view.findViewById<TextView>(R.id.tv_nr).text = "Set " + workSet.id
+            view.findViewById<TextView>(R.id.tv_nr).text =
+                view.context.getString(R.string.workset_set, workSet.number)
             view.findViewById<TextView>(R.id.tv_work_string).text = workSet.workString
             view.findViewById<TextView>(R.id.tv_details).text = workSet.score.toString()
         }
