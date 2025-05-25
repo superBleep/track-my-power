@@ -1,11 +1,13 @@
 package com.afca.trackmypower.ui.workout
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.afca.trackmypower.R
-import com.afca.trackmypower.data.models.WorkoutWithExercises
+import com.afca.trackmypower.adapters.ExerciseAdapter
+import com.afca.trackmypower.data.models.ExerciseWithWorkSets
 import com.afca.trackmypower.data.repositories.workout.WorkoutRepository
 import com.afca.trackmypower.helpers.Constants
 import com.afca.trackmypower.helpers.utils.Formatters.calculateDuration
@@ -26,31 +28,49 @@ class WorkoutFragmentViewModel @Inject constructor(
 ) : ViewModel() {
     val id: Long = savedStateHandle["id"] ?: 86 // ToDo: get through NavArgs from workout list
 
-    val date = MutableLiveData<String>()
-    val position = MutableLiveData<String>()
-    val time = MutableLiveData<String>()
-    val workout = MutableLiveData<WorkoutWithExercises?>()
+    private var exerciseAndWorkSetList = mutableListOf<ExerciseWithWorkSets>()
+    var exerciseAdapter = ExerciseAdapter(exerciseAndWorkSetList)
+
+    private val _stats = MutableLiveData<Map<String, String>>()
+    val stats: LiveData<Map<String, String>>
+        get() = _stats
+
+    init {
+        setStats()
+    }
 
     fun setStats() {
         viewModelScope.launch {
-            workoutRepository.getWithExercises(id).collect { packed ->
-                packed?.let {
-                    date.value = packed.workout.date.format(
+            workoutRepository.getWithExercises(id).collect { workoutAndExercises ->
+                workoutAndExercises?.let {
+                    val dateString = workoutAndExercises.workout.date.format(
                         DateTimeFormatter.ofLocalizedDate(Constants.LOCAL_DATE_FORMAT_STYLE)
                     )
-                    position.value = stringProvider.getString(
+                    val positionString = stringProvider.getString(
                         R.string.workout_position,
-                        packed.workout.year, packed.workout.month, packed.workout.week, packed.workout.day
+                        workoutAndExercises.workout.year, workoutAndExercises.workout.month,
+                        workoutAndExercises.workout.week, workoutAndExercises.workout.day
                     )
-                    time.value = String.format(
+                    val timeString = String.format(
                         Locale.getDefault(),
                         "%s - %s (%s)",
-                        formatTime(packed.workout.startTime),
-                        formatTime(packed.workout.endTime),
-                        formatDuration(calculateDuration(packed.workout.startTime, packed.workout.endTime))
+                        formatTime(workoutAndExercises.workout.startTime),
+                        formatTime(workoutAndExercises.workout.endTime),
+                        formatDuration(calculateDuration(
+                            workoutAndExercises.workout.startTime,
+                            workoutAndExercises.workout.endTime))
                     )
 
-                    workout.value = packed
+                    _stats.value = mapOf(
+                        "date" to dateString,
+                        "position" to positionString,
+                        "time" to timeString
+                    )
+
+                    exerciseAndWorkSetList.clear()
+                    exerciseAndWorkSetList.addAll(workoutAndExercises.exercises)
+
+                    exerciseAdapter.notifyItemRangeChanged(0, exerciseAndWorkSetList.size)
                 }
             }
         }

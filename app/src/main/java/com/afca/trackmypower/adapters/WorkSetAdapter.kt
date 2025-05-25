@@ -1,41 +1,34 @@
 package com.afca.trackmypower.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.afca.trackmypower.R
 import com.afca.trackmypower.data.models.WorkSet
+import com.afca.trackmypower.databinding.ItemWorksetBinding
 
 class WorkSetAdapter(
     private val workSets: List<WorkSet>
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+) : RecyclerView.Adapter<WorkSetAdapter.WorkSetViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WorkSetViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.item_workset, parent, false)
+        val binding = ItemWorksetBinding.inflate(inflater, parent, false)
 
-        return WorkSetViewHolder(view)
+        return WorkSetViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
         return workSets.size
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val workSet = workSets.getOrNull(position) ?: return
-
-        if (holder is WorkSetViewHolder)
+    override fun onBindViewHolder(holder: WorkSetViewHolder, position: Int) {
+        workSets.getOrNull(position)?.let { workSet ->
             holder.bind(workSet)
+        }
     }
 
-    inner class WorkSetViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
+    inner class WorkSetViewHolder(private val binding: ItemWorksetBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(workSet: WorkSet) {
-            view.findViewById<TextView>(R.id.tv_nr).text =
-                view.context.getString(R.string.workset_set, workSet.number)
-            view.findViewById<TextView>(R.id.tv_work_string).text = workSet.workString
-            view.findViewById<TextView>(R.id.tv_details).text = workSet.score.toString()
+            binding.workSet = workSet
         }
     }
 }

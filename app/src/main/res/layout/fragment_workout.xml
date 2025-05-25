@@ -13,90 +13,94 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/main"
+        android:id="@+id/cl_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/workout_background"
         android:paddingTop="30dp">
 
         <LinearLayout
-            android:id="@+id/workout_stats"
-            android:onLongClick="@{() -> listener.goToWorkoutStats()}"
+            android:id="@+id/ll_stats"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             android:layout_centerHorizontal="true"
             android:layout_marginHorizontal="29sp"
             android:background="@drawable/workout_stats_background"
             android:elevation="4dp"
             android:orientation="vertical"
             android:padding="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:onLongClick="@{() -> listener.goToWorkoutStats()}">
 
             <TextView
-                android:id="@+id/date"
+                android:id="@+id/tv_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/rjdhani_bold"
-                android:text="@={viewModel.date}"
+                android:text='@{viewModel.stats["date"]}'
+                tools:text="01 Jan, 2025"
                 android:textSize="30sp"
                 android:textColor="@color/color4"
-                tools:text="01 Jan, 2025" />
+                android:fontFamily="@font/rjdhani_bold" />
 
             <TextView
-                android:id="@+id/day_position"
+                android:id="@+id/tv_position"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/rjdhani_bold"
-                android:text="@={viewModel.position}"
-                android:textColor="@color/color4"
+                android:text='@{viewModel.stats["position"]}'
+                tools:text="Year 1 - Month 2 - Week 3 - Day 4"
                 android:textSize="24sp"
-                tools:text="Year 1 - Month 1 - Week 1 - Day 1" />
+                android:textColor="@color/color4"
+                android:fontFamily="@font/rjdhani_bold" />
 
             <TextView
-                android:id="@+id/time"
+                android:id="@+id/tv_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/rjdhani_bold"
-                android:text="@={viewModel.time}"
+                android:text='@{viewModel.stats["time"]}'
+                tools:text="13:00 - 14:30 (1h30m)"
                 android:textSize="24sp"
                 android:textColor="@color/color4"
-                tools:text="13:00 - 14:30 (1h30m)" />
+                android:fontFamily="@font/rjdhani_bold" />
         </LinearLayout>
 
         <View
             android:id="@+id/workout_bar"
             android:layout_width="0dp"
             android:layout_height="7dp"
-            android:layout_below="@+id/workout_stats"
-            android:layout_alignStart="@+id/workout_stats"
-            android:layout_alignEnd="@id/workout_stats"
-            android:background="@drawable/workout_separator"
-            app:layout_constraintEnd_toEndOf="@+id/workout_stats"
-            app:layout_constraintStart_toStartOf="@+id/workout_stats"
-            app:layout_constraintTop_toBottomOf="@+id/workout_stats"
-            android:layout_marginTop="@dimen/workout_items_spacing" />
+            android:layout_below="@+id/ll_stats"
+            android:layout_alignStart="@+id/ll_stats"
+            android:layout_alignEnd="@id/ll_stats"
+            app:layout_constraintEnd_toEndOf="@+id/ll_stats"
+            app:layout_constraintStart_toStartOf="@+id/ll_stats"
+            app:layout_constraintTop_toBottomOf="@+id/ll_stats"
+            android:layout_marginTop="@dimen/workout_items_spacing"
+            android:background="@drawable/workout_separator" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_exercises"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@+id/workout_stats"
-            app:layout_constraintEnd_toEndOf="@+id/workout_stats"
-            app:layout_constraintTop_toBottomOf="@+id/workout_bar" />
+            app:layout_constraintStart_toStartOf="@+id/ll_stats"
+            app:layout_constraintEnd_toEndOf="@+id/ll_stats"
+            app:layout_constraintTop_toBottomOf="@+id/workout_bar"
+            android:adapter="@{viewModel.exerciseAdapter}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
         <ImageButton
+            android:id="@+id/imb_add_exercise"
             android:layout_width="64sp"
             android:layout_height="64sp"
             android:layout_marginBottom="53sp"
             android:layout_marginEnd="28dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:background="@drawable/add_button"
             android:contentDescription="@string/workout_add_exercise"
             android:src="@drawable/plus"
-            app:tint="@color/color1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:tint="@color/color1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
