@@ -8,13 +8,15 @@ import java.time.format.FormatStyle
 import java.util.Locale
 
 object Formatters {
-    fun formatTime(time: LocalTime): String {
-        val hours = time.hour
-        val minutes = time.minute
+    @JvmStatic
+    fun formatTime(time: LocalTime?): String {
+        val hours = time?.hour
+        val minutes = time?.minute
 
         return String.format(Locale.getDefault(), "%02d:%02d", hours, minutes)
     }
 
+    @JvmStatic
     fun formatDuration(duration: Duration): String {
         val hours = duration.toHours()
         val minutes = duration.toMinutes() % 60
@@ -22,13 +24,15 @@ object Formatters {
         return String.format(Locale.getDefault(), "%1dh%2dm", hours, minutes)
     }
 
-    fun formatDate(date: LocalDate): String {
-        return date.format(DateTimeFormatter
+    @JvmStatic
+    fun formatDate(date: LocalDate?): String? {
+        return date?.format(DateTimeFormatter
             .ofLocalizedDate(FormatStyle.LONG)
             .withLocale(Locale.getDefault())
         )
     }
 
+    @JvmStatic
     fun calculateDuration(start: LocalTime, end: LocalTime): Duration {
         val startSeconds = start.toSecondOfDay().toLong()
         val endSeconds = end.toSecondOfDay().toLong()

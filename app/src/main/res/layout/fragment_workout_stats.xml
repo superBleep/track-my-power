@@ -3,6 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="com.afca.trackmypower.helpers.utils.Formatters" />
+        <import type="com.afca.trackmypower.helpers.utils.Converters" />
+
         <variable
             name="viewModel"
             type="com.afca.trackmypower.ui.workout.WorkoutStatsFragmentViewModel" />
@@ -89,7 +92,7 @@
                     android:hint="@string/workout_stats_date_hint"
                     android:importantForAutofill="no"
                     android:padding="6dp"
-                    android:text="@={viewModel.date}"
+                    android:text="@{Formatters.formatDate(viewModel.date)}"
                     android:textColor="@color/color3"
                     android:textColorHint="@color/textHint"
                     android:textSize="15sp"
@@ -122,7 +125,7 @@
                     android:importantForAutofill="no"
                     android:inputType="number"
                     android:padding="6dp"
-                    android:text="@={viewModel.year}"
+                    android:text='@={Converters.intToString(viewModel.year)}'
                     android:textColor="@color/color3"
                     android:textColorHint="@color/textHint"
                     android:gravity="end"
@@ -154,7 +157,7 @@
                     android:importantForAutofill="no"
                     android:inputType="number"
                     android:padding="6dp"
-                    android:text="@={viewModel.month}"
+                    android:text='@={Converters.intToString(viewModel.month)}'
                     android:textColor="@color/color3"
                     android:textColorHint="@color/textHint"
                     android:gravity="end"
@@ -186,7 +189,7 @@
                     android:importantForAutofill="no"
                     android:inputType="number"
                     android:padding="6dp"
-                    android:text="@={viewModel.week}"
+                    android:text='@={Converters.intToString(viewModel.week)}'
                     android:textColor="@color/color3"
                     android:textColorHint="@color/textHint"
                     android:textSize="17sp"
@@ -218,7 +221,7 @@
                     android:importantForAutofill="no"
                     android:inputType="number"
                     android:padding="6dp"
-                    android:text="@={viewModel.day}"
+                    android:text='@={Converters.intToString(viewModel.day)}'
                     android:textColor="@color/color3"
                     android:textColorHint="@color/textHint"
                     android:textSize="17sp"
@@ -248,7 +251,7 @@
                     android:fontFamily="@font/rjdhani_bold"
                     android:padding="6dp"
                     android:hint="@string/workout_stats_start_time_hint"
-                    android:text="@={viewModel.startTime}"
+                    android:text='@{Formatters.formatTime(viewModel.startTime)}'
                     android:textColor="@color/color3"
                     android:textColorHint="@color/textHint"
                     android:textSize="17sp"
@@ -278,7 +281,7 @@
                     android:fontFamily="@font/rjdhani_bold"
                     android:padding="6dp"
                     android:hint="@string/workout_stats_end_time_hint"
-                    android:text="@={viewModel.endTime}"
+                    android:text='@{Formatters.formatTime(viewModel.endTime)}'
                     android:textColor="@color/color3"
                     android:textColorHint="@color/textHint"
                     android:textSize="17sp"

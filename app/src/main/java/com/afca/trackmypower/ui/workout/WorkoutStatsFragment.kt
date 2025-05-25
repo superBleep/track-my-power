@@ -5,20 +5,16 @@ import android.app.TimePickerDialog
 import android.database.sqlite.SQLiteException
 import android.icu.util.Calendar
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.afca.trackmypower.DataBindingFragment
 import com.afca.trackmypower.R
-import com.afca.trackmypower.helpers.utils.Formatters.formatDate
-import com.afca.trackmypower.helpers.utils.Formatters.formatTime
 import com.afca.trackmypower.databinding.FragmentWorkoutStatsBinding
+import com.afca.trackmypower.exceptions.WorkoutStatsException
+import com.afca.trackmypower.helpers.Constants
 import com.afca.trackmypower.helpers.extensions.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -26,26 +22,17 @@ import java.time.LocalTime
 import java.time.ZoneId
 
 @AndroidEntryPoint
-class WorkoutStatsFragment : Fragment(), WorkoutStatsListener {
-    private var _binding: FragmentWorkoutStatsBinding? = null
-    private val binding get() = _binding!!
+class WorkoutStatsFragment: DataBindingFragment<FragmentWorkoutStatsBinding>(), WorkoutStatsListener {
     private val viewModel by viewModels<WorkoutStatsFragmentViewModel>()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_workout_stats, container, false)
+    override val layoutId: Int
+        get() = R.layout.fragment_workout_stats
 
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.viewModel = viewModel
-        binding.lifecycleOwner = viewLifecycleOwner
         binding.listener = this
 
         lifecycleScope.launch {
@@ -54,21 +41,39 @@ class WorkoutStatsFragment : Fragment(), WorkoutStatsListener {
                     res.onSuccess {
                         goToWorkout()
                     }.onFailure { e ->
-                        if (e is SQLiteException) {
-                            requireContext().showToast("Failed to update workout!")
-                        } else {
-                            requireContext().showToast(e.message.toString())
-                        }
+                        showError(e)
                     }
                 }
             }
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
+    private fun showError(e: Throwable) {
+        val context = requireContext()
+        val message: String = when (e) {
+            is SQLiteException -> context.getString(R.string.workout_stats_err)
+            is WorkoutStatsException -> {
+                val code = e.message?.toIntOrNull()
+                val notNull = context.getString(R.string.workout_stats_err_null)
 
-        _binding = null
+                when (code) {
+                    Constants.WORKOUT_STATS_ERR_YEAR -> context.getString(R.string.workout_stats_err_year) + notNull
+                    Constants.WORKOUT_STATS_ERR_MONTH -> context.getString(R.string.workout_stats_err_month) + notNull
+                    Constants.WORKOUT_STATS_ERR_WEEK -> context.getString(R.string.workout_stats_err_week) + notNull
+                    Constants.WORKOUT_STATS_ERR_DAY -> context.getString(R.string.workout_stats_err_day) + notNull
+                    Constants.WORKOUT_STATS_ERR_DATE_FUTURE -> context.getString(R.string.workout_stats_err_date_future)
+                    Constants.WORKOUT_STATS_ERR_YEAR_RANGE -> context.getString(R.string.workout_stats_err_year_range)
+                    Constants.WORKOUT_STATS_ERR_MONTH_RANGE -> context.getString(R.string.workout_stats_err_month_range)
+                    Constants.WORKOUT_STATS_ERR_WEEK_RANGE -> context.getString(R.string.workout_stats_err_week_range)
+                    Constants.WORKOUT_STATS_ERR_DAY_RANGE -> context.getString(R.string.workout_stats_err_day_range)
+                    else -> context.getString(R.string.workout_stats_err)
+                }
+
+            }
+            else -> context.getString(R.string.workout_stats_err)
+        }
+
+        context.showToast(message)
     }
 
     override fun goToWorkout() {
@@ -76,8 +81,8 @@ class WorkoutStatsFragment : Fragment(), WorkoutStatsListener {
     }
 
     override fun setDate() {
-        viewModel.workout.observe(viewLifecycleOwner) { value ->
-            value!!
+        viewModel.workout.observe(viewLifecycleOwner) { workout ->
+            workout!!
 
             val calendar = Calendar.getInstance()
 
@@ -86,16 +91,13 @@ class WorkoutStatsFragment : Fragment(), WorkoutStatsListener {
                 { _, selYear, selMonth, selDay ->
                     calendar.set(selYear, selMonth, selDay)
 
-                    requireView().findViewById<TextView>(R.id.date_input).text = formatDate(
-                        calendar.time
-                        .toInstant()
+                    viewModel.date.value = calendar.time.toInstant()
                         .atZone(ZoneId.systemDefault())
                         .toLocalDate()
-                    )
                 },
-                value.date.year,
-                value.date.monthValue - 1,
-                value.date.dayOfMonth
+                workout.date.year,
+                workout.date.monthValue - 1,
+                workout.date.dayOfMonth
             )
             datePicker.show()
         }
@@ -108,8 +110,7 @@ class WorkoutStatsFragment : Fragment(), WorkoutStatsListener {
             val timePicker = TimePickerDialog(
                 requireContext(),
                 { _, selHour, selMinute ->
-                    requireView().findViewById<TextView>(R.id.start_time_input).text =
-                        formatTime(LocalTime.of(selHour, selMinute))
+                    viewModel.startTime.value = LocalTime.of(selHour, selMinute)
                 },
                 value.startTime.hour,
                 value.startTime.minute,
@@ -126,8 +127,7 @@ class WorkoutStatsFragment : Fragment(), WorkoutStatsListener {
             val timePicker = TimePickerDialog(
                 requireContext(),
                 { _, selHour, selMinute ->
-                    requireView().findViewById<TextView>(R.id.end_time_input).text =
-                        formatTime(LocalTime.of(selHour, selMinute))
+                    viewModel.startTime.value = LocalTime.of(selHour, selMinute)
                 },
                 value.endTime.hour,
                 value.endTime.minute,
