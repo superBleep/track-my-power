@@ -30,4 +30,7 @@
     <string name="workout_stats_err_day_range">La nueva día debe estar entre 1 y 7</string>
     <string name="workset_set">La serie %1$d</string>
     <string name="workout_stats_err">¡Error al actualizar el entrenamiento!</string>
+    <string name="menu_edit">Editar</string>
+    <string name="menu_delete">Eliminar</string>
+    <string name="menu_workout">Entrenamiento</string>
 </resources>

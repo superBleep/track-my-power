@@ -30,4 +30,7 @@
     <string name="workout_stats_err_day_range">Noua zi trebuie să fie între 1 și 7</string>
     <string name="workset_set">Setul %1$d</string>
     <string name="workout_stats_err">Antrenamentul nu a putut fi salvat!</string>
+    <string name="menu_edit">Modifică</string>
+    <string name="menu_delete">Șterge</string>
+    <string name="menu_workout">Antrenament</string>
 </resources>
