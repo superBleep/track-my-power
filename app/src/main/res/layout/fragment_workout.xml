@@ -105,6 +105,19 @@
             android:src="@drawable/plus"
             app:tint="@color/color1" />
 
+        <ImageButton
+            android:id="@+id/imb_logout"
+            android:layout_width="64sp"
+            android:layout_height="64sp"
+            android:layout_marginBottom="53sp"
+            android:layout_marginStart="28dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/add_button"
+            android:contentDescription="@string/logout"
+            android:src="@drawable/ic_logout"
+            app:tint="@color/color1" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

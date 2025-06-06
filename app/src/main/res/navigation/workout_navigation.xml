@@ -1,9 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/workout_navigation"
-    app:startDestination="@id/workoutFragment">
+    app:startDestination="@id/loginFragment">
+
+    <!-- ─── Login Screen ─────────────────────────────────────────────── -->
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.afca.trackmypower.ui.auth.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+        <!-- Go to Register -->
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+
+        <!-- If login successful → go to existing workout flow -->
+        <action
+            android:id="@+id/action_loginFragment_to_workoutFragment"
+            app:destination="@id/workoutFragment" />
+    </fragment>
+
+    <!-- ─── Register Screen ──────────────────────────────────────────── -->
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.afca.trackmypower.ui.auth.RegisterFragment"
+        android:label="Register"
+        tools:layout="@layout/fragment_register">
+        <!-- After successful registration → return to Login -->
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+    <!-- ─── Existing Workout Flow ────────────────────────────────────── -->
     <fragment
         android:id="@+id/workoutFragment"
         android:name="com.afca.trackmypower.ui.workout.WorkoutFragment"
@@ -17,10 +49,18 @@
                 app:argType="long"
                 app:nullable="false" />
         </action>
+        <!-- ─── NEW: Logout action ──────────────────────────────────── -->
+        <action
+            android:id="@+id/action_logout"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/workout_navigation"
+            app:popUpToInclusive="false" />
+        <!-- ───────────────────────────────────────────────────────────── -->
     </fragment>
+
     <fragment
         android:id="@+id/workoutStatsFragment"
         android:name="com.afca.trackmypower.ui.workout.WorkoutStatsFragment"
         android:label="WorkoutStatsFragment"
-        tools:layout="@layout/fragment_workout_stats"/>
+        tools:layout="@layout/fragment_workout_stats" />
 </navigation>

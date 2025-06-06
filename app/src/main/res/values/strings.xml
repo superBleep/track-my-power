@@ -37,4 +37,6 @@
     <string name="workset_set">Set %1$d</string>
     <string name="workout_stats_err">Failed to update workout!</string>
     <string name="workout_time" translatable="false">%1$s - %2$s (%3$s)</string>
+
+    <string name="logout">Logout</string>
 </resources>

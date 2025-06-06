@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_register_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/workout_background"
+    android:paddingTop="30dp">
+
+    <ScrollView
+        android:id="@+id/sv_register_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="29sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:id="@+id/ll_register_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/workout_stats_background"
+            android:elevation="4dp"
+            android:padding="16dp"
+            android:layout_marginBottom="53sp">
+
+            <!-- “Register” Title -->
+            <TextView
+                android:id="@+id/tv_register_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Register"
+                android:textSize="30sp"
+                android:textColor="@color/color4"
+                android:fontFamily="@font/rjdhani_bold"
+                android:layout_gravity="center_horizontal" />
+
+            <!-- First Name -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_first_name"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="First Name"
+                android:layout_marginTop="16dp"
+                app:boxStrokeColor="@color/color4"
+                app:hintTextColor="@color/color4"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_first_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:fontFamily="@font/rjdhani_bold"
+                    android:textColor="@color/color4"
+                    android:textSize="18sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Last Name -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_last_name"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Last Name"
+                android:layout_marginTop="8dp"
+                app:boxStrokeColor="@color/color4"
+                app:hintTextColor="@color/color4"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_last_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:fontFamily="@font/rjdhani_bold"
+                    android:textColor="@color/color4"
+                    android:textSize="18sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Email -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_email"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:layout_marginTop="8dp"
+                app:boxStrokeColor="@color/color4"
+                app:hintTextColor="@color/color4"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:fontFamily="@font/rjdhani_bold"
+                    android:textColor="@color/color4"
+                    android:textSize="18sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Password with show/hide toggle -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_password"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="Password"
+                app:endIconMode="password_toggle"
+                app:boxStrokeColor="@color/color4"
+                app:hintTextColor="@color/color4"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:fontFamily="@font/rjdhani_bold"
+                    android:textColor="@color/color4"
+                    android:textSize="18sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- ─────────────── Removed Confirm Password Field ─────────────── -->
+
+            <!-- Birth Date (opens DatePicker) -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_birth_date"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="Birth Date"
+                app:boxStrokeColor="@color/color4"
+                app:hintTextColor="@color/color4"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_birth_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:fontFamily="@font/rjdhani_bold"
+                    android:textColor="@color/color4"
+                    android:textSize="18sp" />
+                <!-- Note: No android:hint here! Only the parent has the hint. -->
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Gender dropdown (Male / Female / Other) -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_gender"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="Gender"
+                app:boxStrokeColor="@color/color4"
+                app:hintTextColor="@color/color4"
+                app:errorEnabled="true"
+                app:endIconMode="dropdown_menu">
+
+                <AutoCompleteTextView
+                    android:id="@+id/actv_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:fontFamily="@font/rjdhani_bold"
+                    android:textColor="@color/color4"
+                    android:textSize="18sp" />
+                <!-- Note: no android:hint here either. -->
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Height in meters -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_height"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="Height (m)"
+                app:boxStrokeColor="@color/color4"
+                app:hintTextColor="@color/color4"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_height"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:fontFamily="@font/rjdhani_bold"
+                    android:textColor="@color/color4"
+                    android:textSize="18sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Weight in kg -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_weight"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="Weight (kg)"
+                app:boxStrokeColor="@color/color4"
+                app:hintTextColor="@color/color4"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_weight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:fontFamily="@font/rjdhani_bold"
+                    android:textColor="@color/color4"
+                    android:textSize="18sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Avatar URL -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_avatar"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="Avatar URL"
+                app:boxStrokeColor="@color/color4"
+                app:hintTextColor="@color/color4"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_avatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textUri"
+                    android:fontFamily="@font/rjdhani_bold"
+                    android:textColor="@color/color4"
+                    android:textSize="18sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Experience dropdown (Beginner / Intermediate / Experienced) -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_experience"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="Experience"
+                app:boxStrokeColor="@color/color4"
+                app:hintTextColor="@color/color4"
+                app:errorEnabled="true"
+                app:endIconMode="dropdown_menu">
+
+                <AutoCompleteTextView
+                    android:id="@+id/actv_experience"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:fontFamily="@font/rjdhani_bold"
+                    android:textColor="@color/color4"
+                    android:textSize="18sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Register Button -->
+            <Button
+                android:id="@+id/btn_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Register"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                android:fontFamily="@font/rjdhani_bold"
+                android:textColor="@color/color1"
+                android:background="@drawable/workout_stats_background"
+                android:layout_marginTop="24dp" />
+
+            <!-- Back to Login link -->
+            <TextView
+                android:id="@+id/tv_login_link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Back to Login"
+                android:textSize="18sp"
+                android:fontFamily="@font/rjdhani_bold"
+                android:textColor="@color/color4"
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center_horizontal" />
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
